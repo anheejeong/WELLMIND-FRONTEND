@@ -60,6 +60,7 @@ export default tseslint.config(
       ],
       'react/jsx-props-no-spreading': 'off',
       'react/no-unstable-nested-components': 'off',
+      'no-console': ['warn'],
     },
     settings: {
       'import/resolver': {

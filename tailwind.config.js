@@ -7,6 +7,23 @@ export default {
         primary: {
           DEFAULT: "#2bca43",
         },
+        orange: {
+          100: "#faca18",
+          200: "#fbab13",
+          300: "#f19719",
+          400: "#ef6619",
+        },
+        text: {
+          default: "#262626",
+          dark: "#151515",
+          secondary: "#6d6d6d",
+          light: "#c1c1c1",
+          primary: "#fbaa13"
+        },
+        button: {
+          blue: "#10151a",
+          orange: "#f19719",
+        }
       }
     },
   },
