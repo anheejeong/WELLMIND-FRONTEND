@@ -1,11 +1,19 @@
+import symbol from '@/assets/symbol.png'
+import Login from '@/pages/Login'
+
 export default function AuthPage() {
   return (
-    <div className="flex flex-col">
-      <h1>Jsolution</h1>
-      <h2>HR Management System</h2>
-      <button>id</button>
-      <button>password</button>
-      <button>click</button>
+    <div className="flex flex-col w-full w-full h-screen justify-center items-center">
+      <div className="flex justify-center gap-x-3 mb-12">
+        <img src={symbol} alt="Symbol" className="h-32" />
+        <div className="flex w-fit flex-col justify-between mb-5">
+          <h1 className="text-6xl text-text-primary font-medium">solution</h1>
+          <h2 className="text-4xl text-text-default font-semibold">
+            HR Management System
+          </h2>
+        </div>
+      </div>
+      <Login />
     </div>
   )
 }

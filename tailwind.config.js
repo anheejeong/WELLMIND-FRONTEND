@@ -10,7 +10,7 @@ export default {
         orange: {
           100: "#faca18",
           200: "#fbab13",
-          300: "#3f19719",
+          300: "#f19719",
           400: "#ef6619",
         },
         text: {
@@ -18,10 +18,11 @@ export default {
           dark: "#151515",
           secondary: "#6d6d6d",
           light: "#c1c1c1",
+          primary: "#fbaa13"
         },
         button: {
           blue: "#10151a",
-          orange: "#3f19719"
+          orange: "#f19719",
         }
       }
     },
