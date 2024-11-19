@@ -65,7 +65,7 @@ export default tseslint.config(
     settings: {
       'import/resolver': {
         node: {
-          paths: ['src'],
+          paths: [['@', './src']],
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },
       },
