@@ -1,3 +1,5 @@
+import { IconType } from 'react-icons'
+
 export type ProfileCardItem = {
   name: string
   photo: string
@@ -10,4 +12,10 @@ export type ProfileCardItem = {
 export type GraphItem = {
   time: string[]
   date: string[]
+}
+
+export type MenuButtonItem = {
+  icon: IconType
+  title: string
+  description: string
 }
