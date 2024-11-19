@@ -1,4 +1,7 @@
+import { BiTimeFive } from 'react-icons/bi'
+
 import { Graph } from '@/components/Graph'
+import { MenuButton } from '@/components/MenuButton'
 import { ProfileCard } from '@/components/ProfileCard'
 
 export default function MainPage() {
@@ -22,6 +25,11 @@ export default function MainPage() {
           '2024-11-23',
           '2024-11-24',
         ]}
+      />
+      <MenuButton
+        icon={BiTimeFive}
+        title="출퇴근 기록 조회"
+        description="회사의 출퇴근 시간 기록과 지각 조퇴 결근 기록을 확인해보세요"
       />
     </div>
   )
