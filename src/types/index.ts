@@ -18,4 +18,5 @@ export type MenuButtonItem = {
   icon: IconType
   title: string
   description: string
+  onButtonClick: () => void
 }

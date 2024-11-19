@@ -4,9 +4,13 @@ export const MenuButton = ({
   icon: Icon,
   title,
   description,
+  onButtonClick,
 }: MenuButtonItem) => {
   return (
-    <button className="px-2 py-3 rounded-xl bg-button-lightBlue hover:bg-button-hoverBlue shadow-md">
+    <button
+      onClick={onButtonClick}
+      className="px-2 py-3 rounded-xl bg-button-lightBlue hover:bg-button-hoverBlue shadow-md"
+    >
       <div className="flex flex-col gap-1">
         <div className="flex items-center gap-2">
           <div className="text-text-default">
