@@ -6,3 +6,8 @@ export type ProfileCardItem = {
   buttonMod: 'MESSAGE' | 'EDIT'
   onButtonClick: () => void
 }
+
+export type GraphItem = {
+  time: string[]
+  date: string[]
+}
