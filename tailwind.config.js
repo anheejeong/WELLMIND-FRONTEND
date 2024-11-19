@@ -23,6 +23,10 @@ export default {
         button: {
           blue: "#10151a",
           orange: "#f19719",
+          lightBlue: '#ebeeff',
+          hoverBlue: '#d9e0ff',
+          text: '#3d29df',
+          secondText: '#6d5edb',
         },
         components: {
           profileCard: "#4d4d4d",
