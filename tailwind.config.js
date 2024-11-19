@@ -23,6 +23,9 @@ export default {
         button: {
           blue: "#10151a",
           orange: "#f19719",
+        },
+        components: {
+          profileCard: "#4d4d4d",
         }
       }
     },
