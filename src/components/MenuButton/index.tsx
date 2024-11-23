@@ -1,25 +1,18 @@
 import { MenuButtonItem } from '@/types'
 
 export const MenuButton = ({
-  icon: Icon,
-  title,
-  description,
+  content,
+  color,
   onButtonClick,
 }: MenuButtonItem) => {
   return (
     <button
+      className={`text-left h-8 hover:bg-background-light focus:bg-background-default rounded-md px-1 ${
+        color === 'light' ? 'text-primary-400' : 'text-primary-600'
+      }`}
       onClick={onButtonClick}
-      className="px-2 py-3 rounded-xl bg-button-lightBlue hover:bg-button-hoverBlue shadow-md"
     >
-      <div className="flex flex-col gap-1">
-        <div className="flex items-center gap-2">
-          <div className="text-text-default">
-            <Icon className="w-8 h-8" />
-          </div>
-          <div className="text-xl font-semibold text-text-default">{title}</div>
-        </div>
-        <div className=" px-10 text-sm text-text-secondary">{description}</div>
-      </div>
+      {content}
     </button>
   )
 }
