@@ -17,9 +17,11 @@ export const ProfileCard = ({
         width: '220px',
         height: '170px',
         backgroundImage: `url(${photo})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
     >
-      <div className="flex bg-components-profileCard bg-opacity-85 justify-between px-3 py-2">
+      <div className="flex bg-components-profileCard bg-opacity-80 justify-between px-3 py-2">
         <div className="flex flex-col text-white">
           <div className="flex align-end">
             <div className="text-xl font-semibold">{name}</div>

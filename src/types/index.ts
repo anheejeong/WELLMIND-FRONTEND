@@ -1,5 +1,3 @@
-import { IconType } from 'react-icons'
-
 export type ProfileCardItem = {
   name: string
   photo: string
@@ -15,8 +13,7 @@ export type GraphItem = {
 }
 
 export type MenuButtonItem = {
-  icon: IconType
-  title: string
-  description: string
+  content: string
+  color: 'light' | 'dark'
   onButtonClick: () => void
 }
