@@ -1,8 +1,14 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import AuthPage from '@/pages/AuthPage'
+import CommutePage from '@/pages/CommutePage'
+import EmployeeInfoPage from '@/pages/EmployeeInfoPage'
+import { InnerLayout } from '@/pages/Layout/InnerLayout'
 import { MainLayout } from '@/pages/Layout/MainLayout'
 import MainPage from '@/pages/MainPage'
+import QRPage from '@/pages/QRPage'
+import ReportPage from '@/pages/ReportPage'
+import TransferDeptPage from '@/pages/TransferDeptPage'
 
 const router = createBrowserRouter([
   {
@@ -12,9 +18,34 @@ const router = createBrowserRouter([
         path: '/login',
         element: <AuthPage />,
       },
+    ],
+  },
+  {
+    element: <InnerLayout />,
+    children: [
       {
         path: '/main',
         element: <MainPage />,
+      },
+      {
+        path: '/qr',
+        element: <QRPage />,
+      },
+      {
+        path: '/commute',
+        element: <CommutePage />,
+      },
+      {
+        path: '/transfer-dept',
+        element: <TransferDeptPage />,
+      },
+      {
+        path: '/employee-info',
+        element: <EmployeeInfoPage />,
+      },
+      {
+        path: '/report',
+        element: <ReportPage />,
       },
     ],
   },
