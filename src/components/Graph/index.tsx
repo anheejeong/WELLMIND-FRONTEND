@@ -28,8 +28,8 @@ export const Graph = ({ time, date }: GraphItem) => {
 
     const options = {
       chart: {
-        height: 200,
-        width: 400,
+        height: 230,
+        width: 520,
         type: 'line',
       },
       series: [
@@ -37,7 +37,7 @@ export const Graph = ({ time, date }: GraphItem) => {
           name: 'TEAM C',
           type: 'line',
           data: timeInMinutes,
-          color: 'rgba(0, 44, 73, 0.82)',
+          color: '#3300ff',
         },
       ],
       stroke: {
