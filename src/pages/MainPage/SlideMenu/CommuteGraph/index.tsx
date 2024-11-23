@@ -2,7 +2,7 @@ import { Graph } from '@/components/Graph'
 
 export default function CommuteGraph() {
   return (
-    <div className="flex py-1 rounded-md align-center bg-background-light">
+    <div className="flex py-1 mx-20 rounded-md align-center bg-background-light">
       <div className="mx-auto">
         <Graph
           time={[
