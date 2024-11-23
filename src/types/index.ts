@@ -17,3 +17,14 @@ export type MenuButtonItem = {
   color: 'light' | 'dark'
   onButtonClick: () => void
 }
+
+export type MainReportItem = {
+  id: string
+  date: string
+  name: string
+  type: string
+  progress: string
+  isNew: boolean
+}
+
+export type MainReportTable = MainReportItem[]
