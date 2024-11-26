@@ -39,3 +39,8 @@ export type CommuteReportItem = {
 }
 
 export type CommuteReportTable = CommuteReportItem[]
+
+export type PaginationItem = {
+  currentPage: number
+  totalPage: number
+}
