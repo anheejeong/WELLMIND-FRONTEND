@@ -31,6 +31,12 @@ export const Graph = ({ time, date }: GraphItem) => {
         height: 230,
         width: 520,
         type: 'line',
+        toolbar: {
+          show: false,
+        },
+        animations: {
+          enabled: false,
+        },
       },
       series: [
         {
