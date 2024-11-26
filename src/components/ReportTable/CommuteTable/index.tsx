@@ -24,7 +24,7 @@ export default function CommuteTable({
 
   return (
     <div className="overflow-auto rounded-lg">
-      <table className="table-auto w-full text-text-default text-lg">
+      <table className="table-auto w-full text-text-default text-lg border-separate border-spacing-y-2">
         <thead className="bg-background-light rounded-md pb-10">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id} className="h-10">
@@ -46,37 +46,44 @@ export default function CommuteTable({
             </tr>
           ))}
         </thead>
-        <tr className="h-4 bg-transparent"></tr>
+        <tr className="bg-transparent"></tr>
         <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id} className="h-11">
-              {row
-                .getVisibleCells()
-                .filter((cell) => cell.column.id !== 'id')
-                .map((cell) => {
-                  let textColorClass = ''
-                  if (cell.column.id === 'isLate') {
-                    const progressValue = cell.getValue<boolean>()
-                    textColorClass =
-                      progressValue === true
-                        ? 'text-default-red'
-                        : 'text-default-green'
-                  }
+          {table.getRowModel().rows.map((row) => {
+            const isLate = row.original.isLate // 각 행의 isLate 상태 확인
 
-                  return (
-                    <td
-                      key={cell.id}
-                      className={`py-1 ${textColorClass} text-center`}
-                    >
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </td>
-                  )
-                })}
-            </tr>
-          ))}
+            return (
+              <tr
+                key={row.id}
+                className={`h-8 ${isLate ? 'bg-background-pink' : ''}`} // 조건부 배경색 추가
+              >
+                {row
+                  .getVisibleCells()
+                  .filter((cell) => cell.column.id !== 'id')
+                  .map((cell) => {
+                    let textColorClass = ''
+                    if (cell.column.id === 'isLate') {
+                      const progressValue = cell.getValue<boolean>()
+                      textColorClass =
+                        progressValue === true
+                          ? 'text-default-red'
+                          : 'text-default-green'
+                    }
+
+                    return (
+                      <td
+                        key={cell.id}
+                        className={`py-1 ${textColorClass} text-center`}
+                      >
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </td>
+                    )
+                  })}
+              </tr>
+            )
+          })}
         </tbody>
       </table>
     </div>
