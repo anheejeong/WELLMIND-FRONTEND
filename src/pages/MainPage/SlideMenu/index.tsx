@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import CommuteGraph from '@/pages/MainPage/SlideMenu/CommuteGraph'
+import DetailInfo from '@/pages/MainPage/SlideMenu/DetailInfo'
 import RecentReport from '@/pages/MainPage/SlideMenu/RecentReport'
 
 export default function SlideMenu() {
@@ -42,7 +43,7 @@ export default function SlideMenu() {
         ) : activeBtn === 1 ? (
           <RecentReport />
         ) : (
-          ''
+          <DetailInfo />
         )}
       </div>
     </div>
