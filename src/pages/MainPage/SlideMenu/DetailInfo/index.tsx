@@ -1,21 +1,25 @@
 export default function DetailInfo() {
   return (
     <div className="w-full">
-      <div className="mx-10 px-10 py-4 bg-background-light rounded-sm h-64 overflow-auto">
+      <div className="py-4 rounded-sm h-64 overflow-auto">
         <div className="flex justify-between text-text-default">
-          <div className="flex flex-col gap-4 w-1/2">
+          <div className="flex flex-col gap-5 w-1/2">
             {leftDummy.map((left) => (
-              <div key={left.id} className="flex">
-                <div className="w-1/3">{left.key}</div>
-                <div className="font-semibold w-2/3">{left.data}</div>
+              <div key={left.id} className="flex gap-4">
+                <div className="w-1/3 border-r border-r-text-gray mr-1">
+                  {left.key}
+                </div>
+                <div className="font-semibold flex-1">{left.data}</div>
               </div>
             ))}
           </div>
-          <div className="flex flex-col gap-4 w-1/2">
+          <div className="flex flex-col gap-5 w-1/2">
             {rightDummy.map((left) => (
-              <div key={left.id} className="flex">
-                <div className="w-1/3">{left.key}</div>
-                <div className="font-semibold w-2/3">{left.data}</div>
+              <div key={left.id} className="flex gap-4">
+                <div className="w-2/5 border-r border-r-text-gray pr-1">
+                  {left.key}
+                </div>
+                <div className="font-semibold flex-1">{left.data}</div>
               </div>
             ))}
           </div>
