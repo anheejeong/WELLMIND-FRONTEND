@@ -49,6 +49,7 @@ export default {
           default: '#E7EFFF',
           light: '#F1F5FD',
           purple: '#707EAE',
+          pink: '#fbe5e8',
         },
       },
     },
