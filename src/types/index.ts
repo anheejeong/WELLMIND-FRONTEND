@@ -28,3 +28,19 @@ export type MainReportItem = {
 }
 
 export type MainReportTable = MainReportItem[]
+
+export type CommuteReportItem = {
+  id: string
+  date: string
+  type: string
+  goTime: string
+  leaveTime: string
+  isLate: boolean
+}
+
+export type CommuteReportTable = CommuteReportItem[]
+
+export type PaginationItem = {
+  currentPage: number
+  totalPage: number
+}
