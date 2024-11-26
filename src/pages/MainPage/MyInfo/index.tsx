@@ -15,7 +15,7 @@ export default function MyInfo() {
             <div className="flex items-center gap-4">
               <div className="text-4xl font-bold text-text-default">안희정</div>
               <div className="text-text-white text-xs bg-default-lightRed px-2 py-1 rounded-sm">
-                Manager
+                관리자
               </div>
             </div>
             <div className="text-primary-400 text-xl font-bold">
@@ -55,7 +55,7 @@ export default function MyInfo() {
             <div>
               <BiPencil className="w-6 h-6" />
             </div>
-            EDIT
+            수정
           </button>
         </div>
       </div>
