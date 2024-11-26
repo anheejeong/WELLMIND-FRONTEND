@@ -31,7 +31,7 @@ export const InnerLayout = ({ children }: InnerLayoutProps) => {
           />
         </div>
         <div className="flex md:gap-4 lg:gap-10 xl:gap-16 h-full">
-          <button className="text-lg text-text-default">조직도</button>
+          <button className="text-lg text-text-default">비상 연락망</button>
           <button className="text-lg text-text-default">메세지</button>
           <div className="flex h-2/3 relative my-auto">
             <img
