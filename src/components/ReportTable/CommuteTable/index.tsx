@@ -5,18 +5,16 @@ import {
   useReactTable,
 } from '@tanstack/react-table'
 
-import { CommuteReportItem, CommuteReportTable } from '@/types'
-
-type TableComponentProps = {
-  reports: CommuteReportTable
-  columns: ColumnDef<CommuteReportItem>[]
+type TableComponentProps<T extends object> = {
+  reports: T[]
+  columns: ColumnDef<T>[]
 }
 
-export default function CommuteTable({
+export default function CommuteTabl<T extends object>({
   reports,
   columns,
-}: TableComponentProps) {
-  const table = useReactTable({
+}: TableComponentProps<T>) {
+  const table = useReactTable<T>({
     data: reports,
     columns,
     getCoreRowModel: getCoreRowModel(),
@@ -49,12 +47,13 @@ export default function CommuteTable({
         <tr className="bg-transparent"></tr>
         <tbody>
           {table.getRowModel().rows.map((row) => {
-            const isLate = row.original.isLate // 각 행의 isLate 상태 확인
+            const isLate =
+              'isLate' in row.original ? row.original.isLate : undefined
 
             return (
               <tr
                 key={row.id}
-                className={`h-8 ${isLate ? 'bg-background-pink' : ''}`} // 조건부 배경색 추가
+                className={`h-8 ${isLate ? 'bg-background-pink' : ''}`}
               >
                 {row
                   .getVisibleCells()
