@@ -44,3 +44,15 @@ export type PaginationItem = {
   currentPage: number
   totalPage: number
 }
+
+export type TransferDeptItem = {
+  id: string
+  date: string
+  type: string
+  previous: string
+  update: string
+  reason: string
+  recipient: string
+}
+
+export type TransferDeptTable = TransferDeptItem[]
