@@ -30,8 +30,16 @@ export const InnerLayout = ({ children }: InnerLayoutProps) => {
             placeholder="직원 검색"
           />
         </div>
-        <div className="flex md:gap-4 lg:gap-10 xl:gap-16 h-full">
+        <div className="flex md:gap-4 lg:gap-6 xl:gap-10 h-full">
           <button className="text-lg text-text-default">비상 연락망</button>
+          <button
+            className="text-lg text-text-default"
+            onClick={() => {
+              navigate('/report')
+            }}
+          >
+            리포트
+          </button>
           <button className="text-lg text-text-default">메세지</button>
           <div className="flex h-2/3 relative my-auto">
             <img

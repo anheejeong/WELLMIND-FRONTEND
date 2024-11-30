@@ -5,6 +5,7 @@ export default function CommuteGraph() {
     <div className="flex py-1 mx-20 rounded-md align-center bg-background-light">
       <div className="mx-auto">
         <Graph
+          type="big"
           time={[
             '09:00',
             '09:00',

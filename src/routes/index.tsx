@@ -8,6 +8,7 @@ import { MainLayout } from '@/pages/Layout/MainLayout'
 import MainPage from '@/pages/MainPage'
 import QRPage from '@/pages/QRPage'
 import ReportPage from '@/pages/ReportPage'
+import ReportDetailPage from '@/pages/ReportPage/ReportDetailPage'
 import TransferDeptPage from '@/pages/TransferDeptPage'
 
 const router = createBrowserRouter([
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: '/report',
         element: <ReportPage />,
+      },
+      {
+        path: '/report/detail',
+        element: <ReportDetailPage />,
       },
     ],
   },

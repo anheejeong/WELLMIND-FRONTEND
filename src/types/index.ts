@@ -9,6 +9,7 @@ export type ProfileCardItem = {
 export type GraphItem = {
   time: string[]
   date: string[]
+  type: 'small' | 'big'
 }
 
 export type MenuButtonItem = {

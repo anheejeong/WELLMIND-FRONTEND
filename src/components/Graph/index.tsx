@@ -17,7 +17,7 @@ const minutesToTime = (minutes: number): string => {
   return `${hours}:${mins}`
 }
 
-export const Graph = ({ time, date }: GraphItem) => {
+export const Graph = ({ time, date, type }: GraphItem) => {
   const chartRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const timeInMinutes = time.map(timeToMinutes)
@@ -28,8 +28,8 @@ export const Graph = ({ time, date }: GraphItem) => {
 
     const options = {
       chart: {
-        height: 230,
-        width: 520,
+        height: type === 'big' ? 230 : 150,
+        width: type === 'big' ? 520 : 320,
         type: 'line',
         toolbar: {
           show: false,
@@ -47,7 +47,7 @@ export const Graph = ({ time, date }: GraphItem) => {
         },
       ],
       stroke: {
-        width: 5,
+        width: type === 'big' ? 5 : 3,
         curve: 'smooth',
       },
       labels: date,
