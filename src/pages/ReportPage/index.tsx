@@ -65,7 +65,7 @@ export default function ReportPage() {
             }}
           >
             <div>
-              2024-11-30 안희정 <b>지각 빈발형</b> 리포트
+              2024-11-30 안희정 <b>지각, 야근 빈발형</b> 리포트
             </div>
             <div className="flex items-center gap-3">
               <div>
