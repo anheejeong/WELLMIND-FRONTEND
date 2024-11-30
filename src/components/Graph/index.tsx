@@ -28,7 +28,7 @@ export const Graph = ({ time, date, type }: GraphItem) => {
 
     const options = {
       chart: {
-        height: type === 'big' ? 230 : 130,
+        height: type === 'big' ? 230 : 150,
         width: type === 'big' ? 520 : 320,
         type: 'line',
         toolbar: {
@@ -47,7 +47,7 @@ export const Graph = ({ time, date, type }: GraphItem) => {
         },
       ],
       stroke: {
-        width: 5,
+        width: type === 'big' ? 5 : 3,
         curve: 'smooth',
       },
       labels: date,
