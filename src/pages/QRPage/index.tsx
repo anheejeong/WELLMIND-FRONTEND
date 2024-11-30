@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import QR from '@/assets/qr.png'
+
 export default function QRPage() {
   const [time, setTime] = useState(300)
 
@@ -29,7 +31,8 @@ export default function QRPage() {
         </div>
         <div className="text-default-red text-2xl">{formattedTime}</div>
       </div>
-      <div className="w-96 h-96 bg-text-gray"></div>
+      <img className="w-96 h-96" src={QR} alt="qr" />
+      {/* <div className="w-96 h-96 bg-text-gray"></div> */}
     </div>
   )
 }
