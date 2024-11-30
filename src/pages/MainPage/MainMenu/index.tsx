@@ -53,9 +53,7 @@ export default function MainMenu() {
       <MenuButton
         content="직원 리포트 조회"
         color="dark"
-        onButtonClick={() => {
-          navigate('/report')
-        }}
+        onButtonClick={() => {}}
       />
     </div>
   )
