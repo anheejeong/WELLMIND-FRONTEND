@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown'
 
 import { Graph } from '@/components/Graph'
+import { Keyword } from '@/components/Keyword'
 
 export default function ReportDetailPage() {
   return (
@@ -89,6 +90,19 @@ export default function ReportDetailPage() {
               본 리포트는 안희정 직원의 건강 증진과 업무 효율 향상을 위한
               제안이며, 직원과의 상담을 통해 개선 방향을 구체화하고, 필요한
               지원을 제공해야 합니다.
+            </div>
+            <div className="mt-3">
+              <div className="text-lg font-semibold">키워드</div>
+              <div className="flex">
+                <Keyword keyword="시간" />
+                <Keyword keyword="관리" />
+                <Keyword keyword="지각" />
+                <Keyword keyword="건강" />
+                <Keyword keyword="출근" />
+                <Keyword keyword="업무" />
+                <Keyword keyword="야근" />
+                <Keyword keyword="효율" />
+              </div>
             </div>
             <div className="w-full bg-text-gray" style={{ height: '1px' }} />
             <div className="mb-4">
