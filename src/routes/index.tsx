@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import AuthPage from '@/pages/AuthPage'
 import CommutePage from '@/pages/CommutePage'
 import EmployeeInfoPage from '@/pages/EmployeeInfoPage'
+import EmployeeReportPage from '@/pages/EmployeeReportPage'
 import { InnerLayout } from '@/pages/Layout/InnerLayout'
 import { MainLayout } from '@/pages/Layout/MainLayout'
 import MainPage from '@/pages/MainPage'
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: '/employee-info',
         element: <EmployeeInfoPage />,
+      },
+      {
+        path: '/employee-reports',
+        element: <EmployeeReportPage />,
       },
       {
         path: '/report',
