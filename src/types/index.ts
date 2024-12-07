@@ -56,3 +56,11 @@ export type TransferDeptItem = {
 }
 
 export type TransferDeptTable = TransferDeptItem[]
+
+export type EmployeeReportItem = {
+  date: string
+  name: string
+  type: string
+  progress: 'Waiting' | 'Done'
+  comment: boolean
+}
