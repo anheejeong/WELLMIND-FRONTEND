@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import AuthPage from '@/pages/AuthPage'
 import CommutePage from '@/pages/CommutePage'
+import EmployeeDetailPage from '@/pages/EmployeeDetailPage'
 import EmployeeInfoPage from '@/pages/EmployeeInfoPage'
 import EmployeeReportPage from '@/pages/EmployeeReportPage'
 import { InnerLayout } from '@/pages/Layout/InnerLayout'
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: '/report/detail',
         element: <ReportDetailPage />,
+      },
+      {
+        path: '/employee-info/detail',
+        element: <EmployeeDetailPage />,
       },
     ],
   },
