@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { BiChevronLeft, BiChevronRight, BiShow } from 'react-icons/bi'
+import { useNavigate } from 'react-router-dom'
 import Slider from 'react-slick'
 
 import 'slick-carousel/slick/slick-theme.css'
@@ -45,6 +46,7 @@ function NextArrow({
 }
 
 export default function EmployeeInfoPage() {
+  const navigate = useNavigate()
   const settings = {
     dots: true,
     infinite: false,
@@ -160,7 +162,12 @@ export default function EmployeeInfoPage() {
         title="직원 조회 사유"
         description="직원 정보 조회를 위한 사유를 작성해주세요."
         confirmButton={
-          <ConfirmModalButton onClick={() => setFormIsOpen(false)}>
+          <ConfirmModalButton
+            onClick={() => {
+              setFormIsOpen(false)
+              navigate('/employee-info/detail')
+            }}
+          >
             확인
           </ConfirmModalButton>
         }
