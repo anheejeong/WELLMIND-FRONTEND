@@ -11,3 +11,13 @@ export function authErrorInterceptor(error: AxiosError) {
   }
   return Promise.reject(error)
 }
+
+export function authLoginErrorInterceptor(error: AxiosError) {
+  if (error.response) {
+    const { status } = error.response
+    if (status === 404 || status === 409) {
+      return error.response
+    }
+  }
+  return Promise.reject(error)
+}
