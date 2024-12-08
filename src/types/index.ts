@@ -4,6 +4,7 @@ export type ProfileCardItem = {
   email: string
   buttonMod: 'MESSAGE' | 'EDIT'
   onButtonClick: () => void
+  onClick: () => void
 }
 
 export type GraphItem = {
