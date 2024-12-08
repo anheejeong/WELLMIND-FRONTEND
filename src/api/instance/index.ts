@@ -1,8 +1,12 @@
 import { QueryClient } from '@tanstack/react-query'
 import axios, { AxiosRequestConfig } from 'axios'
 
-import { authErrorInterceptor } from '@/api/instance/authErrorInterceptor'
-import { useAppSelector } from '@/store/hooks/useAppSelector'
+import {
+  // authErrorInterceptor,
+  authLoginErrorInterceptor,
+} from '@/api/instance/authErrorInterceptor'
+
+// import { useAppSelector } from '@/store/hooks/useAppSelector'
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 
@@ -34,22 +38,29 @@ const initInstance = (config: AxiosRequestConfig) => {
 }
 
 export const fetchInstance = initInstance({})
-export const authorizationInstance = initInstance({})
 
-authorizationInstance.interceptors.request.use(
-  (request) => {
-    const authToken = useAppSelector((state) => state.authToken.value)
-
-    if (authToken) {
-      request.headers.Authorization = `Bearer ${authToken}`
-    }
-
-    return request
-  },
-  (error) => error
-)
-
-authorizationInstance.interceptors.response.use(
+fetchInstance.interceptors.response.use(
   (response) => response,
-  authErrorInterceptor
+  authLoginErrorInterceptor
 )
+
+// 리팩토링 시 사용
+// export const authorizationInstance = initInstance({})
+
+// authorizationInstance.interceptors.request.use(
+//   (request) => {
+//     const authToken = useAppSelector((state) => state.authToken.value)
+
+//     if (authToken) {
+//       request.headers.Authorization = `Bearer ${authToken}`
+//     }
+
+//     return request
+//   },
+//   (error) => error
+// )
+
+// authorizationInstance.interceptors.response.use(
+//   (response) => response,
+//   authErrorInterceptor
+// )
