@@ -66,3 +66,8 @@ export type EmployeeReportItem = {
   comment: boolean
   onClick: () => void
 }
+
+export type LoginRequest = {
+  employeeId: string
+  password: string
+}
