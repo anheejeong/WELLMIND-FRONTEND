@@ -64,4 +64,5 @@ export type EmployeeReportItem = {
   type: string
   progress: 'Waiting' | 'Done'
   comment: boolean
+  onClick: () => void
 }
