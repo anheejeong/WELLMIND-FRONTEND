@@ -4,6 +4,7 @@ export type ProfileCardItem = {
   email: string
   buttonMod: 'MESSAGE' | 'EDIT'
   onButtonClick: () => void
+  onClick: () => void
 }
 
 export type GraphItem = {
@@ -63,4 +64,5 @@ export type EmployeeReportItem = {
   type: string
   progress: 'Waiting' | 'Done'
   comment: boolean
+  onClick: () => void
 }

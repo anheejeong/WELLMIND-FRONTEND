@@ -1,9 +1,15 @@
-import { BiChevronLeft, BiChevronRight } from 'react-icons/bi'
+import { useState } from 'react'
+import { BiChevronLeft, BiChevronRight, BiShow } from 'react-icons/bi'
 import Slider from 'react-slick'
 
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
 
+import {
+  ConfirmModal,
+  ConfirmModalButton,
+} from '@/components/Modal/ConfirmModal'
+import { FormModal } from '@/components/Modal/FormModal'
 import { ProfileCard } from '@/components/ProfileCard'
 
 import './employeeInfo.css'
@@ -49,6 +55,8 @@ export default function EmployeeInfoPage() {
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
   }
+  const [confirmIsOpen, setConfirmIsOpen] = useState(false)
+  const [formIsOpen, setFormIsOpen] = useState(false)
 
   return (
     <div className="w-full h-full pt-5 flex flex-col gap-7">
@@ -69,7 +77,8 @@ export default function EmployeeInfoPage() {
                     photo={profile.photo}
                     email={profile.email}
                     buttonMod={profile.buttonMod}
-                    onButtonClick={() => {}}
+                    onButtonClick={() => setConfirmIsOpen(true)}
+                    onClick={() => setConfirmIsOpen(true)}
                   />
                 ))}
               </Slider>
@@ -92,6 +101,7 @@ export default function EmployeeInfoPage() {
                     email={profile.email}
                     buttonMod={profile.buttonMod}
                     onButtonClick={() => {}}
+                    onClick={() => {}}
                   />
                 ))}
               </Slider>
@@ -114,6 +124,7 @@ export default function EmployeeInfoPage() {
                     email={profile.email}
                     buttonMod={profile.buttonMod}
                     onButtonClick={() => {}}
+                    onClick={() => {}}
                   />
                 ))}
               </Slider>
@@ -121,6 +132,44 @@ export default function EmployeeInfoPage() {
           </div>
         </div>
       </div>
+      <ConfirmModal
+        isOpen={confirmIsOpen}
+        onClose={() => setConfirmIsOpen(false)}
+        icon={<BiShow />}
+        title={`직원 정보를 조회하시겠습니까?`}
+        description={
+          '직원 정보 조회를 위해서는 권한 인증과 조회 사유가 필요합니다.'
+        }
+        confirmButton={
+          <ConfirmModalButton
+            onClick={() => {
+              setConfirmIsOpen(false)
+              setFormIsOpen(true)
+            }}
+          >
+            확인
+          </ConfirmModalButton>
+        }
+      />
+      <FormModal
+        isOpen={formIsOpen}
+        onClose={() => {
+          setFormIsOpen(false)
+        }}
+        icon={<BiShow />}
+        title="직원 조회 사유"
+        description="직원 정보 조회를 위한 사유를 작성해주세요."
+        confirmButton={
+          <ConfirmModalButton onClick={() => setFormIsOpen(false)}>
+            확인
+          </ConfirmModalButton>
+        }
+      >
+        <input
+          className="w-full border rounded-md border-text-gray nowrap p-1 focus:outline-none focus:border-default-darkGray"
+          type="text"
+        />
+      </FormModal>
     </div>
   )
 }

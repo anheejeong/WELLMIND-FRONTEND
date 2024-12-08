@@ -6,10 +6,12 @@ export const ProfileCard = ({
   email,
   buttonMod,
   onButtonClick,
+  onClick,
 }: ProfileCardItem) => {
   return (
     <div
-      className="flex flex-col rounded-md justify-end m-2 overflow-hidden"
+      onClick={onClick}
+      className="flex flex-col rounded-md justify-end m-2 overflow-hidden cursor-pointer"
       style={{
         width: '180px',
         height: '160px',

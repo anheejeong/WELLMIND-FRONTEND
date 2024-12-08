@@ -9,6 +9,7 @@ export const EmployeeReport = ({
   type,
   progress,
   comment,
+  onClick,
 }: EmployeeReportItem) => {
   return (
     <div className="w-full my-2.5 py-1.5 px-2 flex border border-text-default rounded-md text-lg text-center">
@@ -40,7 +41,10 @@ export const EmployeeReport = ({
         )}
       </div>
       <div className="w-1/6">
-        <button className="flex inline-flex justify-center items-center text-default-purple">
+        <button
+          onClick={onClick}
+          className="flex inline-flex justify-center items-center text-default-purple"
+        >
           리포트 바로가기
           <BiChevronRight className="w-6 h-6" />
         </button>
