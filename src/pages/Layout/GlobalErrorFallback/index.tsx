@@ -1,6 +1,7 @@
 import { FallbackProps } from 'react-error-boundary'
 import { useNavigate } from 'react-router-dom'
 
+import logo from '@/assets/logo.svg'
 import {
   LoginButton,
   ResetButton,
@@ -16,18 +17,23 @@ export const GlobalErrorFallback = ({
   const navigate = useNavigate()
 
   return (
-    <div>
-      <div>🚨 {message}</div>
-      <div className="flex gap-4">
-        <button
-          className="bg-red-100 text-red-500 outline"
-          onClick={() => {
-            resetErrorBoundary()
-            navigate(-1)
-          }}
-        >
-          이전으로
-        </button>
+    <div className="h-screen w-screen flex flex-col justify-center items-center">
+      <img className="w-44 my-2" src={logo} alt="" />
+      <div className="text-3xl my-1 font-semibold text-text-default">
+        {message}
+      </div>
+      <div className="flex gap-8 my-5">
+        {status !== 401 && (
+          <button
+            className="text-default-gray outline rounded-sm px-2 py-1 hover:bg-background-light"
+            onClick={() => {
+              resetErrorBoundary()
+              navigate(-1)
+            }}
+          >
+            이전으로
+          </button>
+        )}
         <ErrorButton error={error} resetErrorBoundary={resetErrorBoundary} />
       </div>
     </div>
