@@ -15,7 +15,7 @@ export function authErrorInterceptor(error: AxiosError) {
 export function authLoginErrorInterceptor(error: AxiosError) {
   if (error.response) {
     const { status } = error.response
-    if (status === 404 || status === 409) {
+    if (status === 400 || status === 404 || status === 409) {
       return error.response
     }
   }
