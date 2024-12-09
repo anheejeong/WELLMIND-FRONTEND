@@ -2,11 +2,10 @@ import { QueryClient } from '@tanstack/react-query'
 import axios, { AxiosRequestConfig } from 'axios'
 
 import {
-  // authErrorInterceptor,
+  authErrorInterceptor,
   authLoginErrorInterceptor,
 } from '@/api/instance/authErrorInterceptor'
-
-// import { useAppSelector } from '@/store/hooks/useAppSelector'
+import { useAppSelector } from '@/store/hooks/useAppSelector'
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 
@@ -44,23 +43,23 @@ fetchInstance.interceptors.response.use(
   authLoginErrorInterceptor
 )
 
-// 리팩토링 시 사용
-// export const authorizationInstance = initInstance({})
+export const authorizationInstance = initInstance({})
 
-// authorizationInstance.interceptors.request.use(
-//   (request) => {
-//     const authToken = useAppSelector((state) => state.authToken.value)
+authorizationInstance.interceptors.request.use(
+  (request) => {
+    const accessToken = useAppSelector((state) => state.authToken.accessToken)
+    const refreshToken = useAppSelector((state) => state.authToken.refreshToken)
 
-//     if (authToken) {
-//       request.headers.Authorization = `Bearer ${authToken}`
-//     }
+    if (!accessToken || !refreshToken) {
+      throw new Error()
+    }
 
-//     return request
-//   },
-//   (error) => error
-// )
+    return request
+  },
+  (error) => error
+)
 
-// authorizationInstance.interceptors.response.use(
-//   (response) => response,
-//   authErrorInterceptor
-// )
+authorizationInstance.interceptors.response.use(
+  (response) => response,
+  authErrorInterceptor
+)
