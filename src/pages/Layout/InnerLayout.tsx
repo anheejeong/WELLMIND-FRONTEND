@@ -5,8 +5,10 @@ import { Outlet, useNavigate } from 'react-router-dom'
 
 import { useQueryErrorResetBoundary } from '@tanstack/react-query'
 
+import { useLogout } from '@/api/services/auth/logout.api'
 import logo from '@/assets/logo.svg'
 import { GlobalErrorFallback } from '@/pages/Layout/GlobalErrorFallback'
+import LoadingPage from '@/pages/LoadingPage'
 
 interface InnerLayoutProps {
   children?: ReactNode
@@ -15,6 +17,14 @@ interface InnerLayoutProps {
 export const InnerLayout = ({ children }: InnerLayoutProps) => {
   const navigate = useNavigate()
   const { reset } = useQueryErrorResetBoundary()
+
+  const { mutate: handleLogout, status } = useLogout()
+
+  const onLogoutClick = () => {
+    handleLogout()
+  }
+
+  if (status === 'pending') return <LoadingPage />
 
   return (
     <ErrorBoundary FallbackComponent={GlobalErrorFallback} onReset={reset}>
@@ -47,6 +57,12 @@ export const InnerLayout = ({ children }: InnerLayoutProps) => {
               리포트
             </button>
             <button className="text-lg text-text-default">메세지</button>
+            <button
+              onClick={onLogoutClick}
+              className="text-lg text-text-default"
+            >
+              로그아웃
+            </button>
             <div className="flex h-2/3 relative my-auto">
               <img
                 className="h-full rounded-full"
