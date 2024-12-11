@@ -40,7 +40,7 @@ export const Graph = ({ time, date, type }: GraphItem) => {
       },
       series: [
         {
-          name: 'TEAM C',
+          name: '출근 시간',
           type: 'line',
           data: timeInMinutes,
           color: '#3300ff',
