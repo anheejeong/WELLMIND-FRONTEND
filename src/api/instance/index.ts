@@ -5,7 +5,7 @@ import {
   authErrorInterceptor,
   authLoginErrorInterceptor,
 } from '@/api/instance/authErrorInterceptor'
-import { useAppSelector } from '@/store/hooks/useAppSelector'
+import { store } from '@/store/store'
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 
@@ -29,6 +29,7 @@ const initInstance = (config: AxiosRequestConfig) => {
     ...config,
     headers: {
       Accept: 'application/json',
+      'Content-Type': 'application/json',
       ...config.headers,
     },
   })
@@ -47,8 +48,9 @@ export const authorizationInstance = initInstance({})
 
 authorizationInstance.interceptors.request.use(
   (request) => {
-    const accessToken = useAppSelector((state) => state.authToken.accessToken)
-    const refreshToken = useAppSelector((state) => state.authToken.refreshToken)
+    const state = store.getState()
+    const accessToken = state.authToken.accessToken
+    const refreshToken = state.authToken.refreshToken
 
     if (!accessToken || !refreshToken) {
       throw new Error()
