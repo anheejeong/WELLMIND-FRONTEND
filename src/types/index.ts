@@ -88,3 +88,12 @@ export type MyProfileResponse = {
     }
   }
 }
+
+type Attendance = {
+  date: string
+  time: string
+}
+
+export type RecentAttendancesResponse = {
+  data: Attendance[]
+}
