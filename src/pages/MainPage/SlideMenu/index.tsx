@@ -13,7 +13,7 @@ export default function SlideMenu() {
     isPending,
     isLoading,
     error,
-  } = useGetRecentAttendances(8)
+  } = useGetRecentAttendances(10)
 
   if (isPending || isLoading) return <LoadingPage />
   if (error) throw Error
