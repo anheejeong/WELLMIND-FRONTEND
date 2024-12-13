@@ -10,8 +10,7 @@ export default function MainPage() {
 
   if (isPending || isLoading) return <LoadingPage />
   if (error) throw Error
-
-  console.log(Profile)
+  if (!Profile) throw Error
 
   return (
     <div className="flex flex-col w-full">
