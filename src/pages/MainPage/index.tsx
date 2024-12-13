@@ -16,7 +16,7 @@ export default function MainPage() {
     <div className="flex flex-col w-full">
       <MyInfo profile={Profile} />
       <div className="flex gap-12">
-        <MainMenu />
+        <MainMenu authType={Profile.authType} />
         <SlideMenu />
       </div>
     </div>
