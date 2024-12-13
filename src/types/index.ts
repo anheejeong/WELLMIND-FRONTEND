@@ -71,3 +71,20 @@ export type LoginRequest = {
   employeeId: string
   password: string
 }
+
+export type MyProfileResponse = {
+  data: {
+    name: string
+    departName: string
+    positionName: string
+    email: string
+    phoneNum: string
+    authType: 'M' | 'N'
+    photo: string
+    address: {
+      postalCode: string
+      address: string
+      address_detail: string
+    }
+  }
+}

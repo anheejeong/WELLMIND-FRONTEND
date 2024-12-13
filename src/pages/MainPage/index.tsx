@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-
+import { useGetMyProfile } from '@/api/services/profile/myProfile'
 import LoadingPage from '@/pages/LoadingPage'
 
 import MainMenu from './MainMenu'
@@ -7,29 +6,20 @@ import MyInfo from './MyInfo'
 import SlideMenu from './SlideMenu'
 
 export default function MainPage() {
-  const [isLoading, setIsLoading] = useState(true)
+  const { data: Profile, isPending, isLoading, error } = useGetMyProfile()
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 1000)
+  if (isPending || isLoading) return <LoadingPage />
+  if (error) throw Error
 
-    return () => clearTimeout(timer)
-  }, [])
+  console.log(Profile)
 
   return (
-    <>
-      {isLoading ? (
-        <LoadingPage />
-      ) : (
-        <div className="flex flex-col w-full">
-          <MyInfo />
-          <div className="flex gap-12">
-            <MainMenu />
-            <SlideMenu />
-          </div>
-        </div>
-      )}
-    </>
+    <div className="flex flex-col w-full">
+      <MyInfo profile={Profile} />
+      <div className="flex gap-12">
+        <MainMenu />
+        <SlideMenu />
+      </div>
+    </div>
   )
 }
