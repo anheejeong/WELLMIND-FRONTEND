@@ -14,7 +14,7 @@ export default function QRPage() {
       setLongitude(longitude.toString())
     }
     const errorCallback = () => {
-      console.error('Unable to retrieve location.')
+      alert('위치를 허용해주세요')
     }
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
@@ -24,8 +24,6 @@ export default function QRPage() {
   if (longitude === null || latitude === null) {
     return <LoadingPage />
   }
-
-  if (longitude && latitude) console.log(longitude, latitude)
 
   return <QR longitude={longitude} latitude={latitude} />
 }
