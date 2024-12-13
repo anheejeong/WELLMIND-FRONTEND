@@ -22,8 +22,14 @@ export default function MyInfo({ profile }: MyInfoProps) {
               <div className="text-4xl font-bold text-text-default">
                 {profile.name}
               </div>
-              <div className="text-text-white text-xs bg-default-mint px-2 py-1 rounded-sm">
-                {profile.authType === 'M' ? '직원' : '관리자'}
+              <div
+                className={`text-text-white text-xs px-2 py-1 rounded-sm ${
+                  profile.authType === 'N'
+                    ? 'bg-default-mint'
+                    : 'bg-default-lightRed'
+                }`}
+              >
+                {profile.authType === 'N' ? '직원' : '관리자'}
               </div>
             </div>
             <div className="text-primary-400 text-xl font-bold">
@@ -31,7 +37,7 @@ export default function MyInfo({ profile }: MyInfoProps) {
             </div>
           </div>
           <div className="flex flex-col text-lg font-semibold gap-3">
-            <div className="flex justify-between">
+            <div className="flex gap-14">
               <div>
                 <div>
                   <BiEnvelope className="w-6 h-6 text-text-gray" />
