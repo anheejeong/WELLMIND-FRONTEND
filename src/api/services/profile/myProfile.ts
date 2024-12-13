@@ -8,8 +8,6 @@ const getMyProfile = async () => {
     '/api/auth/find-by-id/profile'
   )
 
-  console.log(response)
-
   return response.data.data
 }
 
