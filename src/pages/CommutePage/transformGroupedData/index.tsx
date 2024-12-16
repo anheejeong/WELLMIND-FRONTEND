@@ -18,6 +18,7 @@ export function transformGroupedData(
     const AB = items.find((item) => item.attendStatus === 'AB')
     const VC = items.find((item) => item.attendStatus === 'VC')
     const BT = items.find((item) => item.attendStatus === 'BT')
+    const EL = items.find((item) => item.attendStatus === 'EL')
 
     let type = ''
     let goTime = '-'
@@ -47,6 +48,16 @@ export function transformGroupedData(
       type = '지각 및 야근'
       goTime = LA.time
       leaveTime = LL.time
+      isLate = true
+    } else if (NA && EL) {
+      type = '조퇴'
+      goTime = NA.time
+      leaveTime = EL.time
+      isLate = false
+    } else if (LA && EL) {
+      type = '지각 및 조퇴'
+      goTime = LA.time
+      leaveTime = EL.time
       isLate = true
     }
 
