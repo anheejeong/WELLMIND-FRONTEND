@@ -2,7 +2,15 @@ import { BiSolidChevronLeft, BiSolidChevronRight } from 'react-icons/bi'
 
 import { PaginationItem } from '@/types'
 
-export const Pagination = ({ currentPage, totalPage }: PaginationItem) => {
+type PaginationProps = PaginationItem & {
+  onPageChange: (page: number) => void
+}
+
+export const Pagination = ({
+  currentPage,
+  totalPage,
+  onPageChange,
+}: PaginationProps) => {
   const rendPage = totalPage >= 5 ? Math.ceil(currentPage / 5) * 5 : currentPage
   const startPage = Math.max(rendPage - 4, 1)
   const pages = Array.from(
@@ -23,7 +31,7 @@ export const Pagination = ({ currentPage, totalPage }: PaginationItem) => {
               ? 'bg-primary-900 text-white'
               : 'border border-primary-900 text-text-default hover:bg-background-default'
           }`}
-          onClick={() => console.log(`Go to page: ${page}`)}
+          onClick={() => onPageChange(page)}
         >
           {page}
         </button>
