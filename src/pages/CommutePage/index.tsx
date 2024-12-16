@@ -26,7 +26,7 @@ export default function CommutePage() {
     isLoading,
     isPending,
     error,
-  } = useGetAttend({ page: currentPage, size: 18 })
+  } = useGetAttend({ page: currentPage, size: 9 })
 
   useEffect(() => {
     setTableList(reports)
