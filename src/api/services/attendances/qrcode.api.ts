@@ -8,18 +8,9 @@ export type QRCodeRequest = {
 }
 
 const postQRCode = async ({ longitude, latitude }: QRCodeRequest) => {
-  console.log(longitude, latitude)
-
   const response = await authorizationInstance.post(
     `/api/qr/create?longitude=${longitude}&latitude=${latitude}`
   )
-
-  //   const response = await authorizationInstance.post('/api/qr/create', {
-  //     longitude,
-  //     latitude,
-  //   })
-
-  console.log(response)
 
   return response.data.data
 }
