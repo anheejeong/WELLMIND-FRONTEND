@@ -97,3 +97,24 @@ type Attendance = {
 export type RecentAttendancesResponse = {
   data: Attendance[]
 }
+
+export type PagingRequestParams = {
+  page?: number
+  size?: number
+  sort?: string[]
+}
+
+export type CommuteItem = {
+  attendStatus: string
+  date: string
+  time: string
+  timeSec: string
+}
+
+export type CommuteResponseParams = {
+  data: {
+    content: CommuteItem[]
+    totalElements: number
+    totalPages: number
+  }
+}
