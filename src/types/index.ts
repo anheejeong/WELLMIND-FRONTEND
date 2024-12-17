@@ -145,3 +145,11 @@ export type ProfileReportItem = {
 export type ProfileReportResponseType = {
   data: ProfileReportItem[]
 }
+
+export type MyReportItem = {
+  reportId: number
+  registeredDate: string
+  reportType: string
+  reportedEmployeeId: string
+  reportedEmployeeName: string
+}
