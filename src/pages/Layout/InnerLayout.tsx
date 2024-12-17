@@ -1,14 +1,17 @@
-import { ReactNode } from 'react'
+import { ReactNode, startTransition } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { BiSearch } from 'react-icons/bi'
+import { useDispatch } from 'react-redux'
 import { Outlet, useNavigate } from 'react-router-dom'
 
 import { useQueryErrorResetBoundary } from '@tanstack/react-query'
 
+import { queryClient } from '@/api/instance'
 import { useLogout } from '@/api/services/auth/logout.api'
 import logo from '@/assets/logo.svg'
 import { GlobalErrorFallback } from '@/pages/Layout/GlobalErrorFallback'
 import LoadingPage from '@/pages/LoadingPage'
+import { deleteAuthToken } from '@/store/slices/authToken'
 
 interface InnerLayoutProps {
   children?: ReactNode
@@ -16,12 +19,20 @@ interface InnerLayoutProps {
 
 export const InnerLayout = ({ children }: InnerLayoutProps) => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const { reset } = useQueryErrorResetBoundary()
-
   const { mutate: handleLogout, status } = useLogout()
 
   const onLogoutClick = () => {
-    handleLogout()
+    handleLogout(undefined, {
+      onSuccess: () => {
+        queryClient.clear()
+        dispatch(deleteAuthToken())
+        startTransition(() => {
+          navigate('/login')
+        })
+      },
+    })
   }
 
   if (status === 'pending') return <LoadingPage />
