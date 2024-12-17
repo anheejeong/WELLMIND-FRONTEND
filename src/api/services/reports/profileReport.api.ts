@@ -1,7 +1,7 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 
 import { authorizationInstance } from '@/api/instance'
-import { ProfileReportResponseType } from '@/types'
+import { MyReportItem, ProfileReportResponseType } from '@/types'
 
 const getProfileReport = async (recentCount: number) => {
   const response = await authorizationInstance.get<ProfileReportResponseType>(
@@ -18,5 +18,23 @@ export const useGetProfileReport = (recentCount: number) => {
   return useSuspenseQuery({
     queryKey: ['profileReport', recentCount],
     queryFn: () => getProfileReport(recentCount),
+  })
+}
+
+type MyReportResponseType = {
+  data: MyReportItem[]
+}
+
+const getMyReport = async () => {
+  const response =
+    await authorizationInstance.get<MyReportResponseType>(`/api/report/cal`)
+
+  return response.data.data
+}
+
+export const useGetMyReport = () => {
+  return useSuspenseQuery({
+    queryKey: ['myReport'],
+    queryFn: () => getMyReport(),
   })
 }
