@@ -118,3 +118,19 @@ export type CommuteResponseParams = {
     totalPages: number
   }
 }
+
+export type TransferItem = {
+  id: number
+  managerName: string
+  modDate: string
+  newPosition: string
+  previousPosition: string
+  transferReason: string
+  transferType: string
+}
+
+export type TransferResponseType = {
+  content: TransferItem[]
+  totalElements: number
+  totalPages: number
+}
