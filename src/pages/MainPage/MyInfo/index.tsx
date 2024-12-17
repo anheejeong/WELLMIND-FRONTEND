@@ -19,7 +19,7 @@ export default function MyInfo({ profile }: MyInfoProps) {
         <div className="flex flex-col gap-6 py-3">
           <div className="flex flex-col gap-1">
             <div className="flex items-center gap-4">
-              <div className="text-4xl font-bold text-text-default">
+              <div className="text-3xl font-bold text-text-default">
                 {profile.name}
               </div>
               <div
