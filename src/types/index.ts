@@ -153,3 +153,21 @@ export type MyReportItem = {
   reportedEmployeeId: string
   reportedEmployeeName: string
 }
+
+export type MyReportDetailItem = {
+  data: {
+    reportId: number
+    registeredDate: string
+    modifiedDate: string
+    aiComment: string
+    managerComment: string
+    reportType: string
+    reportedEmployeeId: string
+    reportedEmployeeName: string
+    keywords: string[][]
+    departmentAndPosition: string
+    hireDate: string
+    email: string
+    birthDate: string
+  }
+}
