@@ -5,6 +5,7 @@ type ReportBoxType = {
   employeeId: string
   employeeName: string
   date: string
+  key: number
 }
 
 export const ReportBox = ({
@@ -16,7 +17,7 @@ export const ReportBox = ({
   date,
 }: ReportBoxType) => {
   return (
-    <div className="pt-8 px-7 text-text-default bg-background-light rounded-xl w-full flex flex-col gap-3 cursor-pointer">
+    <div className="pt-8 px-7 text-text-default bg-background-light h-72 rounded-xl w-full flex flex-col gap-3 cursor-pointer">
       <div className="text-2xl">{icon}</div>
       <div className="text-2xl font-semibold">{reportType}</div>
       <div className="w-full bg-text-gray" style={{ height: '0.5px' }} />
