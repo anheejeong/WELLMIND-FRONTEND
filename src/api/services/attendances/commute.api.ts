@@ -23,7 +23,7 @@ const getAttend = async (params: AttendRequest) => {
 }
 
 export const useGetAttend = (options: Partial<AttendRequest> = {}) => {
-  const { page = 0, size = 10, sort = [], employeeId } = options
+  const { page = 0, size = 9, sort = [], employeeId } = options
 
   return useQuery({
     queryKey: ['attend', page, size, sort, employeeId],
