@@ -55,7 +55,7 @@ const router = createBrowserRouter([
         element: <ReportPage />,
       },
       {
-        path: '/report/detail',
+        path: '/report/:detail',
         element: <ReportDetailPage />,
       },
       {
