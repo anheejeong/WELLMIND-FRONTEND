@@ -6,6 +6,7 @@ type ReportBoxType = {
   employeeName: string
   date: string
   key: number
+  onClick: () => void
 }
 
 export const ReportBox = ({
@@ -15,9 +16,13 @@ export const ReportBox = ({
   employeeId,
   employeeName,
   date,
+  onClick,
 }: ReportBoxType) => {
   return (
-    <div className="pt-8 px-7 text-text-default bg-background-light h-72 rounded-xl w-full flex flex-col gap-3 cursor-pointer">
+    <div
+      className="pt-8 px-7 text-text-default bg-background-light h-72 rounded-xl w-full flex flex-col gap-3 cursor-pointer"
+      onClick={onClick}
+    >
       <div className="text-2xl">{icon}</div>
       <div className="text-2xl font-semibold">{reportType}</div>
       <div className="w-full bg-text-gray" style={{ height: '0.5px' }} />
