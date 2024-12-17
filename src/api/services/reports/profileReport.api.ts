@@ -11,8 +11,6 @@ const getProfileReport = async (recentCount: number) => {
     }
   )
 
-  console.log(response.data.data)
-
   return response.data.data
 }
 
