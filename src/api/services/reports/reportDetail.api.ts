@@ -1,4 +1,4 @@
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { authorizationInstance } from '@/api/instance'
 import { MyReportDetailItem } from '@/types'
@@ -27,8 +27,8 @@ export const useGetMyReportDetail = ({
   reportId: number
   employeeId?: string
 }) => {
-  return useSuspenseQuery({
-    queryKey: ['myReportDetail'],
+  return useQuery({
+    queryKey: ['myReportDetail', reportId],
     queryFn: () => getMyReportDetail({ reportId, employeeId }),
   })
 }

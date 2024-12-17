@@ -36,13 +36,14 @@ export default function ReportList({ Reports }: ReportListProps) {
                   description={`${report.reportType}에 관한 레포트입니다.\nAI 웰니스 리포트 및 담당자의 코멘트를 확인해보세요!`}
                   onClick={() => setActiveReportId(report.reportId)}
                 />
-                {activeReportId && (
-                  <ReportDetail
-                    isOpen={activeReportId === report.reportId}
-                    onClose={() => setActiveReportId(null)}
-                    reportId={report.reportId}
-                  />
-                )}
+                {activeReportId !== null &&
+                  activeReportId === report.reportId && (
+                    <ReportDetail
+                      isOpen={activeReportId === report.reportId}
+                      onClose={() => setActiveReportId(null)}
+                      reportId={report.reportId}
+                    />
+                  )}
               </React.Fragment>
             ))}
         </div>
