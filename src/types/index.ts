@@ -134,3 +134,14 @@ export type TransferResponseType = {
   totalElements: number
   totalPages: number
 }
+
+export type ProfileReportItem = {
+  reportId: number
+  registeredDate: string
+  modifiedDate: string
+  reportType: string
+}
+
+export type ProfileReportResponseType = {
+  data: ProfileReportItem[]
+}
