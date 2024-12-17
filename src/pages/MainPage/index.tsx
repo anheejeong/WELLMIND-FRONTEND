@@ -6,9 +6,9 @@ import MyInfo from './MyInfo'
 import SlideMenu from './SlideMenu'
 
 export default function MainPage() {
-  const { data: Profile, isPending, isLoading, error } = useGetMyProfile()
+  const { data: Profile, isLoading, error } = useGetMyProfile()
 
-  if (isPending || isLoading) return <LoadingPage />
+  if (isLoading) return <LoadingPage />
   if (error) throw Error
   if (!Profile) throw Error
 

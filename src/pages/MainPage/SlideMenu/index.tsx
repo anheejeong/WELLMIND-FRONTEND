@@ -11,24 +11,16 @@ export default function SlideMenu() {
   const [activeBtn, setActiveBtn] = useState<number>(0)
   const {
     data: Attendances,
-    isPending: attendancesPending,
     isLoading: attendancesLoading,
     error: attendancesError,
   } = useGetRecentAttendances(10)
   const {
     data: Report,
-    isPending: reportPending,
     isLoading: reportLoading,
     error: reportError,
   } = useGetProfileReport(6)
 
-  if (
-    attendancesLoading ||
-    attendancesPending ||
-    reportLoading ||
-    reportPending
-  )
-    return <LoadingPage />
+  if (attendancesLoading || reportLoading) return <LoadingPage />
   if (attendancesError || reportError) throw Error
   if (!Attendances) throw Error // 데이터 없음 컴포넌트 하나 만들어서 던질 것. 출근 기록 없을 수도.
   if (!Report) alert('레포트가 아직 없습니다.') // 데이터 없음 컴포넌트 필요
