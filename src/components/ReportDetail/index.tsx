@@ -26,11 +26,9 @@ export const ReportDetail = ({
 
   useEffect(() => {
     queryClient.invalidateQueries({
-      queryKey: ['myReportDetail', reportId], // 배열 형태로 쿼리 키를 제공
+      queryKey: ['myReportDetail', reportId],
     })
   }, [reportId, queryClient])
-
-  console.log(reportId)
 
   if (isLoading)
     return (
