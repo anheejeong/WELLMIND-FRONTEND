@@ -185,3 +185,28 @@ export type SimpleEmployeeItem = {
 export type SimpleEmployeeType = {
   content: SimpleEmployeeItem[]
 }
+
+export type MyProfileDetailItem = {
+  employeeId: string
+  education: string[]
+  regNumberFor: string
+  regNumberLat: string
+  userInfo: {
+    hobby: string
+    long: boolean
+    significant: string
+    hireDate: string
+  }
+  userSignificant: {
+    chronicDiseases: string[]
+    jobCategory: string
+    maritalStatus: string
+    skipBreakfast: boolean
+    sllepHours: number
+    smokier: boolean
+  }
+}
+
+export type MyProfileDetailType = {
+  data: MyProfileDetailItem
+}
