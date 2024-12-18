@@ -1,4 +1,4 @@
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { authorizationInstance } from '@/api/instance'
 import { RecentAttendancesResponse } from '@/types'
@@ -21,7 +21,7 @@ const getRecentAttendances = async ({
 }
 
 export const useGetRecentAttendances = (recentCount: number) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: ['myRecentAttendances', recentCount],
     queryFn: () => getRecentAttendances({ recentCount }),
   })

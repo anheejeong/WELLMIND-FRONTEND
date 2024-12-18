@@ -1,4 +1,4 @@
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { authorizationInstance } from '@/api/instance'
 import { MyProfileResponse } from '@/types'
@@ -12,7 +12,7 @@ const getMyProfile = async () => {
 }
 
 export const useGetMyProfile = () => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: ['myProfile'],
     queryFn: () => getMyProfile(),
   })

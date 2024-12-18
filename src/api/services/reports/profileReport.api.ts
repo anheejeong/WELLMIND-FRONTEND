@@ -1,4 +1,4 @@
-import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { authorizationInstance } from '@/api/instance'
 import { MyReportItem, ProfileReportResponseType } from '@/types'
@@ -15,7 +15,7 @@ const getProfileReport = async (recentCount: number) => {
 }
 
 export const useGetProfileReport = (recentCount: number) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: ['profileReport', recentCount],
     queryFn: () => getProfileReport(recentCount),
   })
