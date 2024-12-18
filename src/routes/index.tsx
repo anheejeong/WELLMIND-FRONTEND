@@ -8,6 +8,7 @@ import EmployeeReportPage from '@/pages/EmployeeReportPage'
 import { InnerLayout } from '@/pages/Layout/InnerLayout'
 import { MainLayout } from '@/pages/Layout/MainLayout'
 import MainPage from '@/pages/MainPage'
+import ModifyPasswordPage from '@/pages/ModifyPasswordPage'
 import NewEmployeePage from '@/pages/NewEmployeePage'
 import QRPage from '@/pages/QRPage'
 import ReportPage from '@/pages/ReportPage'
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: '/new-employee',
         element: <NewEmployeePage />,
+      },
+      {
+        path: 'modify-password',
+        element: <ModifyPasswordPage />,
       },
     ],
   },

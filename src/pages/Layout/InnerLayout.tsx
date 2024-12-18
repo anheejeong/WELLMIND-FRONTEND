@@ -58,7 +58,14 @@ export const InnerLayout = ({ children }: InnerLayoutProps) => {
             />
           </div>
           <div className="flex md:gap-4 lg:gap-6 xl:gap-10 h-full">
-            <button className="text-lg text-text-default">비상 연락망</button>
+            <button
+              className="text-lg text-text-default"
+              onClick={() => {
+                navigate('/modify-password')
+              }}
+            >
+              비밀번호 수정
+            </button>
             <button
               className="text-lg text-text-default"
               onClick={() => {
