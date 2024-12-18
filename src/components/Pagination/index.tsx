@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { BiSolidChevronLeft, BiSolidChevronRight } from 'react-icons/bi'
 
 import { PaginationItem } from '@/types'
@@ -11,18 +12,41 @@ export const Pagination = ({
   totalPage,
   onPageChange,
 }: PaginationProps) => {
-  const rendPage = totalPage >= 5 ? Math.ceil(currentPage / 5) * 5 : currentPage
-  const startPage = Math.max(rendPage - 4, 1)
+  const [currentGroup, setCurrentGroup] = useState(
+    Math.floor((currentPage - 1) / 5)
+  )
+
+  const startPage = currentGroup * 5 + 1
+  const endPage = Math.min(startPage + 4, totalPage)
   const pages = Array.from(
-    { length: rendPage - startPage + 1 },
+    { length: endPage - startPage + 1 },
     (_, i) => startPage + i
   )
 
+  const handlePrevGroup = () => {
+    if (currentGroup > 0) {
+      setCurrentGroup(currentGroup - 1)
+      onPageChange(startPage - 5)
+    }
+  }
+
+  const handleNextGroup = () => {
+    if (endPage < totalPage) {
+      setCurrentGroup(currentGroup + 1)
+      onPageChange(startPage + 5)
+    }
+  }
+
   return (
     <div className="w-full flex gap-3 items-center justify-center">
-      <button>
+      <button
+        onClick={handlePrevGroup}
+        disabled={currentGroup === 0}
+        className="disabled:opacity-50"
+      >
         <BiSolidChevronLeft className="text-primary-900" />
       </button>
+
       {pages.map((page) => (
         <button
           key={page}
@@ -36,7 +60,12 @@ export const Pagination = ({
           {page}
         </button>
       ))}
-      <button>
+
+      <button
+        onClick={handleNextGroup}
+        disabled={endPage === totalPage}
+        className="disabled:opacity-50"
+      >
         <BiSolidChevronRight />
       </button>
     </div>
