@@ -5,6 +5,7 @@ import CommutePage from '@/pages/CommutePage'
 import EmployeeDetailPage from '@/pages/EmployeeDetailPage'
 import EmployeeInfoPage from '@/pages/EmployeeInfoPage'
 import EmployeeReportPage from '@/pages/EmployeeReportPage'
+import { ErrorPage } from '@/pages/ErrorPage'
 import { InnerLayout } from '@/pages/Layout/InnerLayout'
 import { MainLayout } from '@/pages/Layout/MainLayout'
 import MainPage from '@/pages/MainPage'
@@ -71,7 +72,7 @@ const router = createBrowserRouter([
   },
   {
     path: '*', // 에러 페이지 구현 후 바꿔야 함
-    element: <AuthPage />,
+    element: <ErrorPage />,
   },
 ])
 

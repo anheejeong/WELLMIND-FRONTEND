@@ -1,10 +1,6 @@
 import { authorizationInstance } from '@/api/instance'
 import { NewEmployeeItem } from '@/types'
 
-// type PostNewEmployeeType = {
-//   info: NewEmployeeItem
-// }
-
 export const postNewEmployee = async ({
   authType,
   departName,
