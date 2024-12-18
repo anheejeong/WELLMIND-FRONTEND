@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { useGetRecentAttendances } from '@/api/services/attendances/attendances.api'
+import { useGetMyProfileDetail } from '@/api/services/profile/myProfileDetail'
 import { useGetProfileReport } from '@/api/services/reports/profileReport.api'
 import LoadingPage from '@/pages/LoadingPage'
 import CommuteGraph from '@/pages/MainPage/SlideMenu/CommuteGraph'
@@ -19,11 +20,18 @@ export default function SlideMenu() {
     isLoading: reportLoading,
     error: reportError,
   } = useGetProfileReport(6)
+  const {
+    data: ProfileDetail,
+    isLoading: detailLoading,
+    error: detailError,
+  } = useGetMyProfileDetail()
 
-  if (attendancesLoading || reportLoading) return <LoadingPage />
-  if (attendancesError || reportError) throw Error
-  if (!Attendances) throw Error // 데이터 없음 컴포넌트 하나 만들어서 던질 것. 출근 기록 없을 수도.
+  if (attendancesLoading || reportLoading || detailLoading)
+    return <LoadingPage />
+  if (attendancesError || reportError || detailError) throw Error
+  if (!Attendances) alert('출근 기록이 아직 없습니다.') // 데이터 없음 컴포넌트 하나 만들어서 던질 것. 출근 기록 없을 수도.
   if (!Report) alert('레포트가 아직 없습니다.') // 데이터 없음 컴포넌트 필요
+  if (!ProfileDetail) alert('세부사항이 아직 없습니다.')
 
   const time = Attendances.map((attendance) => attendance.time)
   const date = Attendances.map((attendance) => attendance.date)
@@ -64,7 +72,7 @@ export default function SlideMenu() {
         ) : activeBtn === 1 ? (
           <RecentReport reports={Report} />
         ) : (
-          <DetailInfo />
+          <DetailInfo detailInfo={ProfileDetail} />
         )}
       </div>
     </div>
