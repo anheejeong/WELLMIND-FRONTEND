@@ -8,6 +8,7 @@ import EmployeeReportPage from '@/pages/EmployeeReportPage'
 import { InnerLayout } from '@/pages/Layout/InnerLayout'
 import { MainLayout } from '@/pages/Layout/MainLayout'
 import MainPage from '@/pages/MainPage'
+import NewEmployeePage from '@/pages/NewEmployeePage'
 import QRPage from '@/pages/QRPage'
 import ReportPage from '@/pages/ReportPage'
 import TransferDeptPage from '@/pages/TransferDeptPage'
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: '/employee-info/:employeeId',
         element: <EmployeeDetailPage />,
+      },
+      {
+        path: '/new-employee',
+        element: <NewEmployeePage />,
       },
     ],
   },
