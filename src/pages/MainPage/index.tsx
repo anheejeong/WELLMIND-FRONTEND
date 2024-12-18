@@ -6,11 +6,11 @@ import MyInfo from './MyInfo'
 import SlideMenu from './SlideMenu'
 
 export default function MainPage() {
-  const { data: Profile, isLoading, error } = useGetMyProfile()
+  const { data: Profile, isLoading, isFetching, error } = useGetMyProfile()
 
-  if (isLoading) return <LoadingPage />
+  if (isLoading || isFetching) return <LoadingPage />
   if (error) throw Error
-  if (!Profile) throw Error
+  if (!Profile) return '프로필이 없습니다...'
 
   return (
     <div className="flex flex-col w-full">
