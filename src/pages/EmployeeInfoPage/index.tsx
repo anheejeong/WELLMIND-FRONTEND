@@ -24,6 +24,8 @@ export default function EmployeeInfoPage() {
     { departName: string; employees: typeof AllEmployees }[]
   >([])
   const [selectEmployeeId, setSelectEmployeeId] = useState<number | null>(null)
+  const [reason, setReason] = useState('')
+  const [isReasonValid, setIsReasonValid] = useState(true)
 
   useEffect(() => {
     if (AllEmployees && AllEmployees.length > 0) {
@@ -49,12 +51,21 @@ export default function EmployeeInfoPage() {
     }
   }, [AllEmployees])
 
-  useEffect(() => {
-    console.log(selectEmployeeId)
-  }, [selectEmployeeId])
-
   if (isLoading) return <LoadingPage />
   if (error) throw Error()
+
+  const handleReasonChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setReason(e.target.value)
+  }
+
+  const handleSubmit = () => {
+    if (!reason.trim()) {
+      setIsReasonValid(false)
+      return
+    }
+    setFormIsOpen(false)
+    navigate(`/employee-info/${selectEmployeeId}`)
+  }
 
   return (
     <div className="w-full h-full pt-5 flex flex-col gap-7">
@@ -92,103 +103,29 @@ export default function EmployeeInfoPage() {
       />
       <FormModal
         isOpen={formIsOpen}
-        onClose={() => {
-          setFormIsOpen(false)
-        }}
+        onClose={() => setFormIsOpen(false)}
         icon={<BiShow />}
         title="직원 조회 사유"
         description="직원 정보 조회를 위한 사유를 작성해주세요."
         confirmButton={
-          <ConfirmModalButton
-            onClick={() => {
-              setFormIsOpen(false)
-              navigate('/employee-info/detail')
-            }}
-          >
-            확인
-          </ConfirmModalButton>
+          <ConfirmModalButton onClick={handleSubmit}>확인</ConfirmModalButton>
         }
       >
-        <input
-          className="w-full border rounded-md border-text-gray nowrap p-1 focus:outline-none focus:border-default-darkGray"
-          type="text"
-        />
+        <div className="mt-4">
+          <input
+            type="text"
+            value={reason}
+            onChange={handleReasonChange}
+            placeholder="사유를 입력하세요"
+            className={`w-full px-4 py-2 border rounded-md text-sm focus:outline-none ${
+              !isReasonValid ? 'border-red-500' : 'border-gray-300'
+            }`}
+          />
+          {!isReasonValid && (
+            <p className="text-red-500 text-xs mt-1">사유 작성은 필수입니다.</p>
+          )}
+        </div>
       </FormModal>
     </div>
   )
 }
-
-// const dummyData = [
-//   {
-//     name: '안희정',
-//     photo: 'https://ifh.cc/g/PVdXh3.jpg',
-//     email: 'eyrt6973@naver.com',
-//     buttonMod: 'MESSAGE' as const,
-//   },
-//   {
-//     name: '석유리',
-//     photo: 'https://ifh.cc/g/PVdXh3.jpg',
-//     email: 'dlkjs800@naver.com',
-//     buttonMod: 'MESSAGE' as const,
-//   },
-//   {
-//     name: '박지현',
-//     photo: 'https://ifh.cc/g/PVdXh3.jpg',
-//     email: 'alkjlskd192@naver.com',
-//     buttonMod: 'MESSAGE' as const,
-//   },
-//   {
-//     name: '김서준',
-//     photo: 'https://ifh.cc/g/PVdXh3.jpg',
-//     email: 'a99a99d@naver.com',
-//     buttonMod: 'MESSAGE' as const,
-//   },
-//   {
-//     name: '한민준',
-//     photo: 'https://ifh.cc/g/PVdXh3.jpg',
-//     email: 'lksjd1@naver.com',
-//     buttonMod: 'MESSAGE' as const,
-//   },
-//   {
-//     name: '서도윤',
-//     photo: 'https://ifh.cc/g/PVdXh3.jpg',
-//     email: 'llldis223@naver.com',
-//     buttonMod: 'MESSAGE' as const,
-//   },
-//   {
-//     name: '김예준',
-//     photo: 'https://ifh.cc/g/PVdXh3.jpg',
-//     email: 'ye1010@naver.com',
-//     buttonMod: 'MESSAGE' as const,
-//   },
-//   {
-//     name: '김시우',
-//     photo: 'https://ifh.cc/g/PVdXh3.jpg',
-//     email: 'lkjdoij123123@naver.com',
-//     buttonMod: 'MESSAGE' as const,
-//   },
-//   {
-//     name: '박하준',
-//     photo: 'https://ifh.cc/g/PVdXh3.jpg',
-//     email: 'hahaha1010@naver.com',
-//     buttonMod: 'MESSAGE' as const,
-//   },
-//   {
-//     name: '유지호',
-//     photo: 'https://ifh.cc/g/PVdXh3.jpg',
-//     email: 'jihoo30@naver.com',
-//     buttonMod: 'MESSAGE' as const,
-//   },
-//   {
-//     name: '강준우',
-//     photo: 'https://ifh.cc/g/PVdXh3.jpg',
-//     email: 'joonhoi100@naver.com',
-//     buttonMod: 'MESSAGE' as const,
-//   },
-//   {
-//     name: '라도현',
-//     photo: 'https://ifh.cc/g/PVdXh3.jpg',
-//     email: 'dodododo66@naver.com',
-//     buttonMod: 'MESSAGE' as const,
-//   },
-// ]
