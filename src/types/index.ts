@@ -1,10 +1,11 @@
 export type ProfileCardItem = {
+  id: number
   name: string
   photo: string
   email: string
   buttonMod: 'MESSAGE' | 'EDIT'
-  onButtonClick: () => void
-  onClick: () => void
+  onButtonClick: (id: number) => void
+  onClick: (id: number) => void
 }
 
 export type GraphItem = {
@@ -170,4 +171,17 @@ export type MyReportDetailItem = {
     email: string
     birthDate: string
   }
+}
+
+export type SimpleEmployeeItem = {
+  name: string
+  email: string
+  id: number
+  photo: string
+  departName: string
+  positionName: string
+}
+
+export type SimpleEmployeeType = {
+  content: SimpleEmployeeItem[]
 }
