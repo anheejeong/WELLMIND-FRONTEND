@@ -33,8 +33,8 @@ export default function SlideMenu() {
   if (!Report) alert('레포트가 아직 없습니다.') // 데이터 없음 컴포넌트 필요
   if (!ProfileDetail) alert('세부사항이 아직 없습니다.')
 
-  const time = Attendances.map((attendance) => attendance.time)
-  const date = Attendances.map((attendance) => attendance.date)
+  const time = Attendances?.map((attendance) => attendance.time)
+  const date = Attendances?.map((attendance) => attendance.date)
 
   const buttons = [
     { content: '출결 현황' },
@@ -67,13 +67,13 @@ export default function SlideMenu() {
         ))}
       </div>
       <div className="mt-6 px-12">
-        {activeBtn === 0 ? (
-          <CommuteGraph time={time} date={date} />
-        ) : activeBtn === 1 ? (
-          <RecentReport reports={Report} />
-        ) : (
-          <DetailInfo detailInfo={ProfileDetail} />
-        )}
+        {activeBtn === 0
+          ? Attendances &&
+            time &&
+            date && <CommuteGraph time={time} date={date} />
+          : activeBtn === 1
+            ? Report && <RecentReport reports={Report} />
+            : ProfileDetail && <DetailInfo detailInfo={ProfileDetail} />}
       </div>
     </div>
   )

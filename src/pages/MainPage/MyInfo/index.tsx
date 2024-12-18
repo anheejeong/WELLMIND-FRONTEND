@@ -9,12 +9,16 @@ type MyInfoProps = {
 export default function MyInfo({ profile }: MyInfoProps) {
   return (
     <div className="flex gap-12">
-      <img
-        className="rounded-sm object-cover"
-        src={profile.photo}
-        alt="myphoto"
-        style={{ width: '200px', height: '280px' }}
-      />
+      {profile.photo ? (
+        <img
+          className="rounded-sm object-cover"
+          src={profile.photo}
+          alt="myphoto"
+          style={{ width: '200px', height: '280px' }}
+        />
+      ) : (
+        <div style={{ width: '200px', height: '280px' }} />
+      )}
       <div className="flex justify-between flex-1 relative">
         <div className="flex flex-col gap-6 py-3">
           <div className="flex flex-col gap-1">
@@ -57,8 +61,8 @@ export default function MyInfo({ profile }: MyInfoProps) {
               <div>
                 <BiHome className="w-6 h-6 text-text-gray" />
               </div>
-              <div>{profile.address.postalCode}</div>
-              <div>{`${profile.address.address} ${profile.address.address_detail}`}</div>
+              <div>{profile.address?.postalCode}</div>
+              <div>{`${profile.address?.address} ${profile.address?.address_detail}`}</div>
             </div>
           </div>
         </div>
