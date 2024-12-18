@@ -82,8 +82,8 @@ export type MyProfileResponse = {
     email: string
     phoneNum: string
     authType: 'M' | 'N'
-    photo: string
-    address: {
+    photo?: string
+    address?: {
       postalCode: string
       address: string
       address_detail: string
@@ -271,4 +271,10 @@ export type NewEmployeeResponse = {
   data: NewEmployeeItem | null
   count: number | null
   state: string | null
+}
+
+export type ModifyPasswordItem = {
+  oldPassword: string
+  newPassword: string
+  confirmNewPassword: string
 }
