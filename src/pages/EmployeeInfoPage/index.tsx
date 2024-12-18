@@ -23,7 +23,7 @@ export default function EmployeeInfoPage() {
   const [groupedEmployees, setGroupedEmployees] = useState<
     { departName: string; employees: typeof AllEmployees }[]
   >([])
-  const [selectEmployeeId, setSelectEmployeeId] = useState<number | null>(null)
+  const [selectEmployeeId, setSelectEmployeeId] = useState<string | null>(null)
   const [reason, setReason] = useState('')
   const [isReasonValid, setIsReasonValid] = useState(true)
 
@@ -51,6 +51,10 @@ export default function EmployeeInfoPage() {
     }
   }, [AllEmployees])
 
+  useEffect(() => {
+    console.log(selectEmployeeId)
+  }, [selectEmployeeId])
+
   if (isLoading) return <LoadingPage />
   if (error) throw Error()
 
@@ -68,8 +72,16 @@ export default function EmployeeInfoPage() {
   }
 
   return (
-    <div className="w-full h-full pt-5 flex flex-col gap-7">
-      <div className="text-2xl text-text-default font-bold">직원 조회</div>
+    <div className="w-full h-full pt-5 flex flex-col gap-7 text-text-default">
+      <div className="flex justify-between">
+        <div className="text-2xl text-text-default font-bold">직원 조회</div>
+        <button
+          onClick={() => navigate('/new-employee')}
+          className="rounded-sm bg-background-default px-4 font-semibold hover:bg-background-light"
+        >
+          직원 생성
+        </button>
+      </div>
       <div className="w-full flex-1 flex flex-col gap-5 h-full overflow-y-auto">
         {groupedEmployees?.length > 0 &&
           groupedEmployees.map((group) => (
@@ -78,7 +90,7 @@ export default function EmployeeInfoPage() {
               departName={group.departName}
               employees={group.employees || []}
               setConfirmIsOpen={() => setConfirmIsOpen(true)}
-              setSelectEmployeeId={(id: number) => setSelectEmployeeId(id)}
+              setSelectEmployeeId={(id: string) => setSelectEmployeeId(id)}
             />
           ))}
       </div>

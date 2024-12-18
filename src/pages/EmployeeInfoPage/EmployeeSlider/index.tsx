@@ -41,7 +41,7 @@ function NextArrow({
 
 type EmployeeSliderType = {
   setConfirmIsOpen: () => void
-  setSelectEmployeeId: (id: number) => void
+  setSelectEmployeeId: (id: string) => void
   departName: string
   employees: SimpleEmployeeItem[]
 }
@@ -78,18 +78,18 @@ export default function EmployeeSlider({
               {employees.map((employee, index) => (
                 <ProfileCard
                   key={index}
-                  id={employee.id}
+                  id={employee.employeeId}
                   name={employee.name}
                   photo={employee.photo}
                   email={employee.email}
                   buttonMod="MESSAGE"
                   onButtonClick={() => {
                     setConfirmIsOpen()
-                    setSelectEmployeeId(employee.id)
+                    setSelectEmployeeId(employee.employeeId)
                   }}
                   onClick={() => {
                     setConfirmIsOpen()
-                    setSelectEmployeeId(employee.id)
+                    setSelectEmployeeId(employee.employeeId)
                   }}
                 />
               ))}
@@ -98,18 +98,18 @@ export default function EmployeeSlider({
             employees.map((employee, index) => (
               <ProfileCard
                 key={index}
-                id={employee.id}
+                id={employee.employeeId}
                 name={employee.name}
                 photo={employee.photo}
                 email={employee.email}
                 buttonMod="MESSAGE"
                 onButtonClick={() => {
                   setConfirmIsOpen()
-                  setSelectEmployeeId(employee.id)
+                  setSelectEmployeeId(employee.employeeId)
                 }}
                 onClick={() => {
                   setConfirmIsOpen()
-                  setSelectEmployeeId(employee.id)
+                  setSelectEmployeeId(employee.employeeId)
                 }}
               />
             ))
