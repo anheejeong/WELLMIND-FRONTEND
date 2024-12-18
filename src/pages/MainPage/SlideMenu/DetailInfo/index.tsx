@@ -5,8 +5,6 @@ type DetailInfoType = {
 }
 
 export default function DetailInfo({ detailInfo }: DetailInfoType) {
-  console.log(detailInfo)
-
   return (
     <div className="w-full">
       <div className="py-4 rounded-sm h-64 overflow-auto">
