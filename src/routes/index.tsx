@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         element: <ReportPage />,
       },
       {
-        path: '/employee-info/detail',
+        path: '/employee-info/:employeeId',
         element: <EmployeeDetailPage />,
       },
     ],
