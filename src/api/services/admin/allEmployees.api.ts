@@ -7,8 +7,6 @@ const getAllEmployees = async () => {
   const response =
     await authorizationInstance.get<SimpleEmployeeType>('/api/auth/find-by')
 
-  console.log(response.data.content)
-
   return response.data.content
 }
 
