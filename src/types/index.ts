@@ -1,11 +1,11 @@
 export type ProfileCardItem = {
-  id: number
+  id: string
   name: string
   photo: string
   email: string
   buttonMod: 'MESSAGE' | 'EDIT'
-  onButtonClick: (id: number) => void
-  onClick: (id: number) => void
+  onButtonClick: (id: string) => void
+  onClick: (id: string) => void
 }
 
 export type GraphItem = {
@@ -60,12 +60,13 @@ export type TransferDeptItem = {
 export type TransferDeptTable = TransferDeptItem[]
 
 export type EmployeeReportItem = {
+  id: number
   date: string
   name: string
   type: string
   progress: 'Waiting' | 'Done'
   comment: boolean
-  onClick: () => void
+  onClick: (id: number) => void
 }
 
 export type LoginRequest = {
@@ -180,6 +181,7 @@ export type SimpleEmployeeItem = {
   photo: string
   departName: string
   positionName: string
+  employeeId: string
 }
 
 export type SimpleEmployeeType = {
@@ -209,4 +211,64 @@ export type MyProfileDetailItem = {
 
 export type MyProfileDetailType = {
   data: MyProfileDetailItem
+}
+
+export type EmployeeDetailItem = {
+  departName: string
+  positionName: string
+  education: string[]
+  userInfo?: {
+    address: {
+      address: string
+      address_detail: string
+      postalCode: string
+    }
+    hireDate: string
+    hobby: string
+    long: boolean
+    photo: string
+    significant: string
+  }
+  userTopDto?: {
+    authType: 'M' | 'N'
+    email: string
+    employeeId: string
+    name: string
+    phoneNum: string
+  }
+}
+
+export type EmployeeDetailType = {
+  data: EmployeeDetailItem
+}
+
+export type SimpleReportItem = {
+  registeredDate: string
+  reportId: number
+  reportType: string
+  reportedEmployeeId: string
+  reportedEmployeeName: string
+}
+
+export type ReportsType = {
+  data: {
+    content: SimpleReportItem[]
+  }
+}
+
+export type NewEmployeeItem = {
+  email: string
+  name: string
+  phoneNum: string
+  authType: string
+  employeeId: string
+  departName: string
+  positionName: string
+}
+
+export type NewEmployeeResponse = {
+  message: string
+  data: NewEmployeeItem | null
+  count: number | null
+  state: string | null
 }
